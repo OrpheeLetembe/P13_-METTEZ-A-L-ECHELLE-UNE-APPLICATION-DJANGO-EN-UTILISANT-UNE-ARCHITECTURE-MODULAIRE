@@ -28,9 +28,9 @@ jobs:
 
     steps:
       - checkout
-      - setup_remote_docker:
-            version: 20.10.14
-
+      - run:
+          name: Start Docker
+          command: docker login
       - run:
           name: Build Docker image
           command: docker build -t oc_lettings:$CIRCLE_SHA1 .
@@ -42,4 +42,6 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - lintng-and-test
-      - build-and-deploy
+      - build-and-deploy:
+          requires:
+            - lintng-and-test
