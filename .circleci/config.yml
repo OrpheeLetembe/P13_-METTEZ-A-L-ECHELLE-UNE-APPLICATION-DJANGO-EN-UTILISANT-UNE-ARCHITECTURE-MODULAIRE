@@ -33,6 +33,12 @@ jobs:
       - run:
           name: Build Docker image
           command: docker build -t oc_lettings:$CIRCLE_SHA1 .
+      - run:
+          name: Push to DockerHub
+          command: |
+            docker login -u $DOCKERHUB_LOGIN -P $DOCKERHUB_PASSWORD
+            docker push oc_lettings:$CIRCLE_SHA1
+
 
         # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
