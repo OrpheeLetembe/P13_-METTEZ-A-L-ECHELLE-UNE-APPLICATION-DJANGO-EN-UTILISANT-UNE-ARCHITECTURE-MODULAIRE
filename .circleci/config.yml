@@ -34,7 +34,9 @@ jobs:
           command: |
             docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
             docker build -t oc_lettings:$CIRCLE_SHA1 .
-            docker push oc_lettings:$CIRCLE_SHA1
+            docker tag local-image:oc_lettings:$CIRCLE_SHA1new-repo:oc_lettings:$CIRCLE_SHA1
+            docker push new-repo:oc_lettings:$CIRCLE_SHA1
+
 
 
         # Invoke jobs via workflows
