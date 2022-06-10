@@ -36,7 +36,7 @@ jobs:
       - run:
           name: Push to DockerHub
           command: |
-            docker login -u $DOCKERHUB_LOGIN -P $DOCKERHUB_PASSWORD
+            docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
             docker push oc_lettings:$CIRCLE_SHA1
 
 
