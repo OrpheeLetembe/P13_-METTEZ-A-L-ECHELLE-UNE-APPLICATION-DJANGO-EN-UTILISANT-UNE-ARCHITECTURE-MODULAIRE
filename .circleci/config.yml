@@ -23,14 +23,13 @@ jobs:
           command: pytest
 
   build-and-deploy:
-    docker:
-      - image: cimg/python:3.9
+    machine: true
+
+    working_directory: ~/project
 
     steps:
       - checkout
-      - run:
-          name: Start Docker
-          command: docker login
+
       - run:
           name: Build Docker image
           command: docker build -t oc_lettings:$CIRCLE_SHA1 .
