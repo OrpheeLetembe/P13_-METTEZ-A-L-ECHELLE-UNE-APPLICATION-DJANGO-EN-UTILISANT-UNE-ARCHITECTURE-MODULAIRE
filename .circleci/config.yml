@@ -34,7 +34,7 @@ jobs:
           command: |
             docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
             docker build -t oc_lettings:$CIRCLE_SHA1 .
-            docker push docker push orphee1980/repo_letting:oc_lettings:$CIRCLE_SHA1
+            docker push orphee1980/repo_letting:oc_lettings:$CIRCLE_SHA1
 
 
 
