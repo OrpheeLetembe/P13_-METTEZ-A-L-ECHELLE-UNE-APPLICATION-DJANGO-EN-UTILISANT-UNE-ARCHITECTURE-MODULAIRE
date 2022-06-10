@@ -29,14 +29,11 @@ jobs:
 
     steps:
       - checkout
-
       - run:
-          name: Build Docker image
-          command: docker build -t oc_lettings:$CIRCLE_SHA1 .
-      - run:
-          name: Push to DockerHub
+          name: Build image and push to DockerHub
           command: |
             docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+            docker build -t oc_lettings:$CIRCLE_SHA1 .
             docker push oc_lettings:$CIRCLE_SHA1
 
 
