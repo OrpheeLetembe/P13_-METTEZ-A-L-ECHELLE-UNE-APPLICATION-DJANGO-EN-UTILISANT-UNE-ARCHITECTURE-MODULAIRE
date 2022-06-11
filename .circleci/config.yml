@@ -35,6 +35,13 @@ jobs:
             docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
             docker build -t orphee1980/repo_letting:$CIRCLE_SHA1 .
             docker push orphee1980/repo_letting:$CIRCLE_SHA1
+      - run:
+          name: Deploy to Heroku
+          command: |
+            docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
+            docker tag orphee1980/repo_letting:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
+            docker push registry.heroku.com/$HEROKU_APP_NAME/web
+
 
 
 
@@ -48,3 +55,7 @@ workflows:
       - build-and-deploy:
           requires:
             - lintng-and-test
+          filters:
+            branches:
+              only:
+                - master
