@@ -42,14 +42,8 @@ jobs:
             docker tag orphee1980/repo_letting:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
 
-
-
-
-        # Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  sample:
     jobs:
       - lintng-and-test
       - build-and-deploy:
