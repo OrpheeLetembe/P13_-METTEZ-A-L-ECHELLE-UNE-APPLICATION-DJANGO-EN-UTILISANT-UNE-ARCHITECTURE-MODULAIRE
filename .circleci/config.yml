@@ -59,6 +59,7 @@ workflows:
               only: master
       - deploy:
           requires:
+            - linting-and-tests
             - build
           filters:
             branches:
