@@ -7,7 +7,7 @@ orbs:
 
 
 jobs:
-  Lintng-and-tests:
+  lintng-and-test:
     docker:
       - image: cimg/python:3.9
 
@@ -22,7 +22,7 @@ jobs:
           name: Run tests
           command: pytest
 
-  Build:
+  build-and-deploy:
     machine: true
 
     working_directory: ~/project
@@ -35,11 +35,6 @@ jobs:
             docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
             docker build -t orphee1980/repo_letting:$CIRCLE_SHA1 .
             docker push orphee1980/repo_letting:$CIRCLE_SHA1
-  Deploy:
-    machine: true
-
-    steps:
-      - checkout
       - run:
           name: Deploy to Heroku
           command: |
@@ -50,17 +45,11 @@ jobs:
 workflows:
   sample:
     jobs:
-      - Lintng-and-tests
-      - Build:
+      - lintng-and-test
+      - build-and-deploy:
           requires:
-            - Lintng-and-tests
+            - lintng-and-test
           filters:
             branches:
-              only: master
-      - Deploy:
-          requires:
-            - Linting-and-tests
-            - Build
-          filters:
-            branches:
-              only: master
+              only:
+                - master
