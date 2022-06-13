@@ -59,7 +59,6 @@ workflows:
               only: master
       - deploy:
           requires:
-            - lintng-and-tests
             - build
           filters:
             branches:
