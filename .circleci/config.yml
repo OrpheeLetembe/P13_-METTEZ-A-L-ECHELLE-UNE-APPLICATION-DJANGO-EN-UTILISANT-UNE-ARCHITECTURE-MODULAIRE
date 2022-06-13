@@ -48,7 +48,7 @@ jobs:
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
 
 workflows:
-  sample:
+  test_build_deploy:
     jobs:
       - lintng-and-tests
       - build:
