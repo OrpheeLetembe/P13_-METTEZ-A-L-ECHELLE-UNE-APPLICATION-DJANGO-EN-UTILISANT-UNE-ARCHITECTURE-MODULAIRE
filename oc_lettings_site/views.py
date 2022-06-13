@@ -10,4 +10,4 @@ def index(request):
     Aliquam vitae erat ac orci placerat luctus. Nullam elementum urna nisi, pellentesque iaculis
     enim cursus in. Praesent volutpat porttitor magna, non finibus neque cursus id.
     """
-    return render(request, 'oc_lettings_site/ndex.html')
+    return render(request, 'oc_lettings_site/index.html')
