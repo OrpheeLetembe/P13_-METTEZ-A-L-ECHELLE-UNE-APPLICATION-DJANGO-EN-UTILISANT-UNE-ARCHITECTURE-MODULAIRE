@@ -36,7 +36,7 @@ jobs:
             docker push orphee1980/repo_letting:$CIRCLE_SHA1
   deploy:
     machine: true
-    # working_directory: ~/project
+    working_directory: ~/project
 
     steps:
       - run:
