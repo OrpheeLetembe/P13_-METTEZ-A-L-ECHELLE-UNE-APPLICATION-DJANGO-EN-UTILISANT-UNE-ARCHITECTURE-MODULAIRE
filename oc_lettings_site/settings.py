@@ -1,5 +1,5 @@
 import os
-from decouple import config
+#from decouple import config
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
