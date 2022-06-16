@@ -28,9 +28,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = get_env_variable('SECRET_KEY', 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(get_env_variable('DEBUG_MODE', True))
+DEBUG = bool(get_env_variable('DEBUG_MODE', 'true'))
 
-ALLOWED_HOSTS = get_env_variable('HOST', "")
+ALLOWED_HOSTS = get_env_variable('HOST', [])
 
 
 # Application definition
