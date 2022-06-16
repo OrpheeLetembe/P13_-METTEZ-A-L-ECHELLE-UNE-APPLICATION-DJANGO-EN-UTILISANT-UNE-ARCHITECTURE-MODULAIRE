@@ -1,7 +1,4 @@
 import os
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-# from decouple import config
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -128,16 +125,3 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-
-# sentry configuration
-sentry_sdk.init(
-    dsn=os.environ['SENTRY_DSN'],
-    integrations=[
-        DjangoIntegration(),
-    ],
-
-    traces_sample_rate=1.0,
-
-    send_default_pii=True
-)
