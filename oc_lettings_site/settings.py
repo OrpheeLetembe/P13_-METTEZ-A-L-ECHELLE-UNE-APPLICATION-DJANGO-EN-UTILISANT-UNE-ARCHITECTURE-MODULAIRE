@@ -1,19 +1,7 @@
 import os
 import sentry_sdk
-from django.core.exceptions import ImproperlyConfigured
 from sentry_sdk.integrations.django import DjangoIntegration
 # from decouple import config
-
-
-def get_env_variable(var_name, default_value=None):
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        if default_value is None:
-            error_msg = f'Set the {var_name} environment variable'
-            raise ImproperlyConfigured(error_msg)
-        else:
-            return default_value
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,12 +13,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable('SECRET_KEY', 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s')
+SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(get_env_variable('DEBUG_MODE', 'true'))
+DEBUG = True
 
-ALLOWED_HOSTS = get_env_variable('HOST', 'localhost')
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -144,7 +132,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # sentry configuration
 sentry_sdk.init(
-    dsn=get_env_variable('SENTRY_DNS', ""),  # [SENTRY_DSN],
+    dsn=os.environ['SENTRY_DSN'],
     integrations=[
         DjangoIntegration(),
     ],
