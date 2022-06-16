@@ -30,7 +30,7 @@ SECRET_KEY = get_env_variable('SECRET_KEY', 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(get_env_variable('DEBUG_MODE', True))
 
-ALLOWED_HOSTS = get_env_variable('HOST', "")  # []
+ALLOWED_HOSTS = get_env_variable('HOST', "")
 
 
 # Application definition
