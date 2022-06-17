@@ -80,9 +80,9 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['LOCAL_DB'],
-        'USER': os.environ['PG_USER'],
-        'PASSWORD': os.environ['PG_PASS'],
+        'NAME': 'oc_lettings_DB',
+        'USER': 'postgres',
+        'PASSWORD': 'Lnop1980.',
         'HOST': 'localhost',
         'PORT': ''
     }
