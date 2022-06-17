@@ -47,7 +47,7 @@ jobs:
             docker pull orphee1980/repo_letting:$CIRCLE_SHA1
             docker tag orphee1980/repo_letting:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
-            heroku run python manage.py loaddata oc-lettings-ol/dumps/data.json
+
 
 
 
