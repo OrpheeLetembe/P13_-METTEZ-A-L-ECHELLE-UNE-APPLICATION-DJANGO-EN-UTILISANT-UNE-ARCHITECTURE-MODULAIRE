@@ -15,7 +15,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('', include('lettings.urls')),
     path('', include('profiles.urls')),
-    # test sentry url
+    # test sentry url app
     path('sentry-debug/', trigger_error),
 
 ]
