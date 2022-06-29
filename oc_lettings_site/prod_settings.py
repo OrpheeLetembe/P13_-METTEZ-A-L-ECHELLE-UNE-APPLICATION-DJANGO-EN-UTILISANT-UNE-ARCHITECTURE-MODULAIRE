@@ -21,7 +21,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['oc-lettings-02.herokuapp.com']
 
 
-# Application definition/
+# Application definition
 
 INSTALLED_APPS = [
     'oc_lettings_site.apps.OCLettingsSiteConfig',
